@@ -7,7 +7,7 @@ Nest+Swagger+Prisma+Postgres → Docker compose
 yarn docker:up
 ```
 
-[localhost:3000/api에](http://localhost:3000/api에) 접속
+[localhost:3000/api](http://localhost:3000/api)에 접속
 
 ---
 
