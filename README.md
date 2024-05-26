@@ -9,7 +9,9 @@ yarn docker:up
 
 [localhost:3000/api](http://localhost:3000/api)에 접속
 
-버전 업데이트 방법
+---
+
+## 버전 업데이트 방법
 
 ```jsx
 yarn docker:down
@@ -27,8 +29,8 @@ git checkout -b feat/(모듈이름)
 
 ```jsx
 nest generate module (모듈이름)
-nest g controller (모듈이름)/(모듈이름) --flat
-nest g service (모듈이름)/(모듈이름) --flat
+nest g controller (모듈이름)
+nest g service (모듈이름)
 ```
 
 ---
