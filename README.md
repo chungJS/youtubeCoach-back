@@ -9,6 +9,14 @@ yarn docker:up
 
 [localhost:3000/api](http://localhost:3000/api)에 접속
 
+버전 업데이트 방법
+
+```jsx
+yarn docker:down
+docker image rm youtubecoach-back-api
+yarn docker:up
+```
+
 ---
 
 ## 모듈 코딩
