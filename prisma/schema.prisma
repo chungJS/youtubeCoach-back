@@ -14,69 +14,57 @@ datasource db {
 }
 
 model User {
-  user_id     Int      @id @default(autoincrement())
-  user_name   String   
-  id          String   
-  password    String   
-  email       String   
-  call_number String   
-  gender      String   
-  api_key     String   
-  created_at  DateTime 
+  user_id      Int      @id @default(autoincrement())
+  user_name    String
+  login_id     String   @unique
+  password     String
+  email        String   @unique
+  phone_number String   @unique
+  api_key      String?
+  created_at   DateTime
 
-  sessions  Session[]
-  channels  Channel[]
-  advices   Advice[]
-}
-
-model Session {
-  session_id Int      @id @default(autoincrement())
-  user_id    Int
-  token      String   
-  created_at DateTime 
-  updated_at DateTime 
-
-  user User @relation(fields: [user_id], references: [user_id])
+  channels Channel?
+  advices  Advice[]
 }
 
 model Channel {
   channel_id       Int      @id @default(autoincrement())
-  user_id          Int
-  channel_name     String   
+  user_id          Int      @unique
+  channel_name     String
   subscriber_count Int?
   view_count       Int?
   video_count      Int?
-  created_at       DateTime 
-  updated_at       DateTime 
+  created_at       DateTime
+  updated_at       DateTime
 
-  user   User   @relation(fields: [user_id], references: [user_id])
+  user   User    @relation(fields: [user_id], references: [user_id])
   videos Video[]
 }
 
 model Video {
   video_id      Int      @id @default(autoincrement())
   channel_id    Int
-  url           String   
-  title         String   
-  description   String   
+  url           String
+  title         String
+  description   String
   view_count    Int?
   like_count    Int?
   comment_count Int?
-  published_at  DateTime 
-  created_at    DateTime 
-  updated_at    DateTime 
+  published_at  DateTime
+  created_at    DateTime
+  updated_at    DateTime
 
-  channel Channel @relation(fields: [channel_id], references: [channel_id])
+  channel Channel  @relation(fields: [channel_id], references: [channel_id])
   advices Advice[]
 }
 
 model Advice {
-  advice_id   Int      @id @default(autoincrement())
-  user_id     Int
-  video_id    Int
-  advice_str  String   
-  created_at  DateTime 
-  updated_at  DateTime 
+  advice_id  Int      @id @default(autoincrement())
+  user_id    Int
+  video_id   Int
+  advice_str String
+  created_at DateTime
+  updated_at DateTime
 
   user  User  @relation(fields: [user_id], references: [user_id])
   video Video @relation(fields: [video_id], references: [video_id])
